@@ -18,6 +18,7 @@ function checkProfitLoss(){
 }
 
 function calculateProfitLoss(intial,quantity,current){
+   stockGif.style.display = "none" 
     let flage = false;
     if(intial > current){
         let loss = (intial - current) * quantity;
@@ -25,6 +26,8 @@ function calculateProfitLoss(intial,quantity,current){
         flage = true;
         showMessage(`Hey, the loss is ${loss} and the percent is ${lossPercentage}%`)
         changeBackgroundColor(flage); 
+        stockGif.style.display = "block" 
+        stockGif.setAttribute('src','./gif/not-stonks-profit-down.gif')
 
     }
     else if( current > intial){
@@ -33,10 +36,14 @@ function calculateProfitLoss(intial,quantity,current){
         //let flage = false;
         changeBackgroundColor(flage);
         showMessage(`Hey, the profit is ${profit} and the percent is ${profitPercentage}%`)
+        stockGif.style.display = "block" 
+        stockGif.setAttribute('src','./gif/pump-wojak.gif')
     }
 
     else{
         showMessage("No loss no gain")
+        changeBackground.style.backgroundColor = "#BFDBFE"
+
     }
              
 }
@@ -52,7 +59,7 @@ function changeBackgroundColor(flage){
     if(flage == true)
     changeBackground.style.backgroundColor = "red";
     else
-    changeBackground.style.backgroundColor = "#BEF264";
+    changeBackground.style.backgroundColor = "green";
 
   console.log("check")
 }
